@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>@{{ username }} – Profile</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #121212;
+      color: #eee;
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .profile-container {
+      max-width: 600px;
+      margin: 60px auto;
+      background: #1e1e1e;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 25px rgba(0,0,0,0.5);
+      text-align: center;
+    }
+
+    .avatar {
+      width: 100px;
+      height: 100px;
+      background-color: #121212;
+      border: 5px solid {{ ring_color }};
+      color: {{ ring_color }};
+      font-size: 42px;
+      font-weight: bold;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 10px auto;
+      text-transform: uppercase;
+    }
+
+    .rank {
+      font-weight: bold;
+      font-size: 16px;
+      color: {{ ring_color }};
+      margin-top: 8px;
+    }
+
+    h2 {
+      margin: 5px 0;
+    }
+
+    .info {
+      color: #bbb;
+      font-size: 15px;
+      margin: 6px 0;
+    }
+
+    .xp-bar-container {
+      background: #333;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-top: 20px;
+      height: 18px;
+    }
+
+    .xp-bar {
+      background: linear-gradient(to right, #00c6ff, #0072ff);
+      height: 100%;
+      width: {{ xp % 100 }}%;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 30px;
+      color: #00c6ff;
+      text-decoration: none;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="profile-container">
+    <div class="avatar">{{ username[0] }}</div>
+    <h2>@{{ username }}</h2>
+    <div class="rank">🏅 {{ rank }}</div>
+
+    <p class="info">{{ name }}</p>
+    <p class="info">{{ email }}</p>
+    <p class="info">{{ phone }}</p>
+
+    <div class="info">📊 XP: {{ xp }}</div>
+    <div class="xp-bar-container">
+      <div class="xp-bar" style="width: {{ xp % 100 }}%;"></div>
+    </div>
+
+    <p class="info">📬 Total Posts: {{ total_posts }}</p>
+    <p class="info">❤️ Total Likes: {{ total_likes }}</p>
+
+    <a href="/feed" class="back-link">← Back to Feed</a>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login & Sign Up - Jain Connect</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #0d0d0d;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 40px 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(0,0,0,0.5);
+      backdrop-filter: blur(10px);
+      width: 320px;
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      font-size: 24px;
+      font-weight: 600;
+    }
+
+    input[type="text"], input[type="password"], input[type="email"], input[type="tel"] {
+      width: 90%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #333;
+      border-radius: 10px;
+      background: #1e1e1e;
+      color: #fff;
+      font-size: 14px;
+    }
+
+    button {
+      width: 95%;
+      padding: 12px;
+      border: none;
+      border-radius: 12px;
+      background: linear-gradient(90deg, #00c6ff, #0072ff);
+      color: #fff;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 15px;
+      margin-top: 15px;
+    }
+
+    a {
+      display: block;
+      margin-top: 15px;
+      color: #aaa;
+      text-decoration: none;
+      font-size: 13px;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .message {
+      color: red;
+      margin-top: 10px;
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container" id="login">
+    <h2>Welcome Back 👋</h2>
+    <form action="/login" method="post">
+      <input type="text" name="username" placeholder="Username" required>
+      <input type="password" name="password" placeholder="Password" required>
+      <button type="submit">Login</button>
+      {% if login_message %}
+      <p class="message">{{ login_message }}</p>
+      {% endif %}
+    </form>
+    <a href="#signup" onclick="showSignup()">Don't have an account? Sign Up</a>
+  </div>
+
+  <div class="container" id="signup" style="display:none">
+    <h2>Create Account 🚀</h2>
+    <form action="/signup" method="post">
+      <input type="text" name="name" placeholder="Full Name" required>
+      <input type="email" name="email" placeholder="Email" required>
+      <input type="tel" name="phone" placeholder="Phone Number" required>
+      <input type="text" name="username" placeholder="Username" required>
+      <input type="password" name="password" placeholder="Password" required>
+      <button type="submit">Sign Up</button>
+      {% if signup_message %}
+      <p class="message">{{ signup_message }}</p>
+      {% endif %}
+    </form>
+    <a href="#login" onclick="showLogin()">Already have an account? Login</a>
+  </div>
+
+  <script>
+    function showSignup() {
+      document.getElementById('login').style.display = 'none';
+      document.getElementById('signup').style.display = 'block';
+    }
+
+    function showLogin() {
+      document.getElementById('signup').style.display = 'none';
+      document.getElementById('login').style.display = 'block';
+    }
+  </script>
+
+</body>
+</html>

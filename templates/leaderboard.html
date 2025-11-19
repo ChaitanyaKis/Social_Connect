@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Leaderboard</title>
+  <style>
+    body {
+      background-color: #121212;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      width: 80%;
+      margin: 50px auto;
+      background: #1e1e1e;
+      padding: 20px;
+      border-radius: 12px;
+    }
+    h1 {
+      text-align: center;
+      color: #00c6ff;
+      margin-bottom: 30px;
+    }
+    .user-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #2c2c2c;
+      padding: 10px 20px;
+      margin: 10px 0;
+      border-radius: 8px;
+      font-size: 1.1rem;
+    }
+    .rank {
+      font-weight: bold;
+      margin-right: 10px;
+      color: gold;
+      width: 30px;
+    }
+    .username {
+      flex: 1;
+    }
+    .xp {
+      color: #FFD700;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🏆 <span style="color:deepskyblue;">Leaderboard</span></h1>
+    {% for user in users %}
+      <div class="user-row">
+        <div class="rank">
+  {% if loop.index == 1 %}
+    🥇
+  {% elif loop.index == 2 %}
+    🥈
+  {% elif loop.index == 3 %}
+    🥉
+  {% else %}
+    #{{ loop.index }}
+  {% endif %}
+</div>
+
+        <div class="username">@{{ user.username }}{% if user.name %} ({{ user.name }}){% endif %}</div>
+        <div class="xp">{{ user.rank }} – {{ user.xp }} XP</div>
+      </div>
+    {% endfor %}
+  </div>
+</body>
+</html>
